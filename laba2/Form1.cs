@@ -32,6 +32,42 @@ namespace laba2
             comboBoxAuto.SelectedIndex = 0;
         }
 
+        private void buttonInfo_Click(object sender, EventArgs e)
+        {
+            int count = dataGridView1.Rows.Count;
+            int CarCount = 0, TruckCount = 0, BusCount = 0, TaxisCount = 0;
+            double profit = 0;
+            listBox1.Items.Clear();
+            for (int i = 1; i <= count; i++)
+            {
+                if (Autos[i - 1] is Car)
+                {
+                    CarCount++;
+                }
+                else if (Autos[i - 1] is Truck)
+                {
+                    TruckCount++;
+                }
+                else if (Autos[i - 1] is Taxis)
+                {
+                    Taxis vehTaxis = Autos[i - 1] as Taxis;
+                    TaxisCount++;
+                    profit = profit + vehTaxis.Profit(vehTaxis.NumOfRoutes);
+                }
+
+                else if (Autos[i - 1] is Bus)
+                {
+                    BusCount++;
+                }
+            }
+            listBox1.Items.Add($"Всего в автопарке: { count } ТС");
+            listBox1.Items.Add($"Легковых автомобилей: { CarCount }");
+            listBox1.Items.Add($"Грузовых автомобилей: { TruckCount }");
+            listBox1.Items.Add($"Автобусов: { BusCount }");
+            listBox1.Items.Add($"Маршрутных такси: { TaxisCount }");
+            listBox1.Items.Add($"Выгода от маршруток составляет { profit } крышек");
+        }
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
@@ -41,13 +77,11 @@ namespace laba2
                     Autos.RemoveAt(dataGridView1.SelectedCells[0].RowIndex);
                     MessageBox.Show("ТС списано из автопарка!");
                 }
-                else
-                    MessageBox.Show("ТС в автопарке!");
                 dataGridUpd();
             }
             catch
             {
-                MessageBox.Show("Выберите ТС!");
+                MessageBox.Show("ТС не выбрано!");
             }
         }
 
@@ -149,7 +183,7 @@ namespace laba2
             }
             catch
             {
-                MessageBox.Show("Выберите ТС!");
+                MessageBox.Show("ТС не выбрано!");
             }
         }
 
@@ -318,42 +352,6 @@ namespace laba2
                 label11.Visible = true;
                 textBoxRoutes.Visible = true;
             }
-        }
-
-        private void buttonInfo_Click(object sender, EventArgs e)
-        {
-            int count = dataGridView1.Rows.Count;
-            int CarCount = 0, TruckCount = 0, BusCount = 0, TaxisCount = 0;
-            double profit = 0;
-            listBox1.Items.Clear();
-            for (int i = 1; i <= count; i++)
-            {
-                if (Autos[i - 1] is Car)
-                {
-                    CarCount++;
-                }
-                else if (Autos[i - 1] is Truck)
-                {
-                    TruckCount++;
-                }
-                else if (Autos[i - 1] is Taxis)
-                {
-                    Taxis vehTaxis = Autos[i - 1] as Taxis;
-                    TaxisCount++;
-                    profit = profit + vehTaxis.Profit(vehTaxis.NumOfRoutes);
-                }
-
-                else if (Autos[i - 1] is Bus)
-                {
-                    BusCount++;
-                }
-            }
-            listBox1.Items.Add($"Всего в автопарке: { count } ТС");
-            listBox1.Items.Add($"Легковых автомобилей: { CarCount }");
-            listBox1.Items.Add($"Грузовых автомобилей: { TruckCount }");
-            listBox1.Items.Add($"Автобусов: { BusCount }");
-            listBox1.Items.Add($"Маршрутных такси: { TaxisCount }");
-            listBox1.Items.Add($"Выгода от маршруток составляет { profit } крышек");
         }
     }
 }
