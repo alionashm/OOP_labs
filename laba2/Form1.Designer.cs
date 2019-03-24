@@ -193,7 +193,7 @@
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(99, 47);
             this.buttonEdit.TabIndex = 36;
-            this.buttonEdit.Text = "Подтвердить изменения";
+            this.buttonEdit.Text = "Изменить авто";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 

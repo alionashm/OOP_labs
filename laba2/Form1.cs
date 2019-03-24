@@ -24,11 +24,11 @@ namespace laba2
             listBox1.Items.Clear();
             listBox1.Items.Add("Выберите ТС.");
             dataGridView1.Rows.Clear();
-            ClearTextBox();
+            ClearFields();
             for (int i = 0; i < Autos.Count; i++)
                 dataGridView1.Rows.Add(Autos[i].Brand, Autos[i].Model, Autos[i].Year, $"{Autos[i].Engine.NumOfCylind} цилиндров {Autos[i].Engine.Power}л.с.");
         }
-        private void ClearTextBox()
+        private void ClearFields()
         {
             textBoxBrand.Clear();
             textBoxModel.Clear();
@@ -57,7 +57,7 @@ namespace laba2
             }
         }
 
-        private void FillTextBoxes()
+        private void FillFields()
         {
             textBoxBrand.Text = Autos[dataGridView1.SelectedCells[0].RowIndex].Brand;
             textBoxModel.Text = Autos[dataGridView1.SelectedCells[0].RowIndex].Model;
@@ -69,30 +69,30 @@ namespace laba2
             if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
             {
                 comboBoxAuto.SelectedIndex = 1;
-                Car curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
-                textBoxSeats.Text = curr.NumOfSeats.ToString();
-                textBoxType.Text = curr.Type;
-                textBoxCategory.Text = curr.Category;
+                Car veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
+                textBoxSeats.Text = veh.NumOfSeats.ToString();
+                textBoxType.Text = veh.Type;
+                textBoxCategory.Text = veh.Category;
             }
             else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Truck)
             {
                 comboBoxAuto.SelectedIndex = 2;
-                Truck curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
-                textBoxLoad.Text = curr.LoadCapacity.ToString();
-                textBoxAxles.Text = curr.NumOfAxles.ToString();
+                Truck veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
+                textBoxLoad.Text = veh.LoadCapacity.ToString();
+                textBoxAxles.Text = veh.NumOfAxles.ToString();
             }
             else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Taxis)
             {
                 comboBoxAuto.SelectedIndex = 4;
-                Taxis currTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
-                textBoxRoutes.Text = currTaxis.NumOfRoutes.ToString();
+                Taxis vehTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
+                textBoxRoutes.Text = vehTaxis.NumOfRoutes.ToString();
             }
             else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Bus)
             {
                 comboBoxAuto.SelectedIndex = 3;
-                Bus curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
-                textBoxLen.Text = curr.Length.ToString();
-                textBoxApp.Text = curr.Appointment;
+                Bus veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
+                textBoxLen.Text = veh.Length.ToString();
+                textBoxApp.Text = veh.Appointment;
             }
         }
 
@@ -112,37 +112,37 @@ namespace laba2
                     if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
                     {
                         comboBoxAuto.SelectedIndex = 1;
-                        Car curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
-                        curr.NumOfSeats = Convert.ToInt32(textBoxSeats.Text);
-                        curr.Type = textBoxType.Text;
-                        curr.Category = textBoxCategory.Text;
-                        Autos[dataGridView1.SelectedCells[0].RowIndex] = curr;
+                        Car veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
+                        veh.NumOfSeats = Convert.ToInt32(textBoxSeats.Text);
+                        veh.Type = textBoxType.Text;
+                        veh.Category = textBoxCategory.Text;
+                        Autos[dataGridView1.SelectedCells[0].RowIndex] = veh;
                     }
                     else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Truck)
                     {
                         comboBoxAuto.SelectedIndex = 2;
-                        Truck curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
-                        curr.LoadCapacity = Convert.ToInt32(textBoxLoad.Text);
-                        curr.NumOfAxles = Convert.ToInt32(textBoxAxles.Text);
-                        Autos[dataGridView1.SelectedCells[0].RowIndex] = curr;
+                        Truck veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
+                        veh.LoadCapacity = Convert.ToInt32(textBoxLoad.Text);
+                        veh.NumOfAxles = Convert.ToInt32(textBoxAxles.Text);
+                        Autos[dataGridView1.SelectedCells[0].RowIndex] = veh;
                     }
                     else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Taxis)
                     {
                         comboBoxAuto.SelectedIndex = 4;
-                        Taxis currTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
-                        currTaxis.NumOfRoutes = Convert.ToInt32(textBoxRoutes.Text);
-                        Autos[dataGridView1.SelectedCells[0].RowIndex] = currTaxis;
+                        Taxis vehTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
+                        vehTaxis.NumOfRoutes = Convert.ToInt32(textBoxRoutes.Text);
+                        Autos[dataGridView1.SelectedCells[0].RowIndex] = vehTaxis;
                     }
                     else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Bus)
                     {
                         comboBoxAuto.SelectedIndex = 3;
-                        Bus curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
-                        curr.Length = Convert.ToInt32(textBoxLen.Text);
-                        curr.Appointment = textBoxApp.Text;
-                        Autos[dataGridView1.SelectedCells[0].RowIndex] = curr;
+                        Bus veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
+                        veh.Length = Convert.ToInt32(textBoxLen.Text);
+                        veh.Appointment = textBoxApp.Text;
+                        Autos[dataGridView1.SelectedCells[0].RowIndex] = veh;
                     }
                     dataGridUpd();
-                    ClearTextBox();
+                    ClearFields();
                 }
                 else
                 {
@@ -159,7 +159,7 @@ namespace laba2
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             listBox1.Items.Clear();
-            FillTextBoxes();
+            FillFields();
             try
             {
                 listBox1.Items.Add($"{ Autos[dataGridView1.SelectedCells[0].RowIndex].Brand} { Autos[dataGridView1.SelectedCells[0].RowIndex].Model}");
@@ -168,35 +168,35 @@ namespace laba2
 
                 if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
                 {
-                    Car curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
+                    Car veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
                     listBox1.Items.Add("Вид ТС: легковушка");
-                    listBox1.Items.Add($"Кол-во мест: { curr.NumOfSeats}");
-                    listBox1.Items.Add($"Тип кузова: { curr.Type}");
-                    listBox1.Items.Add($"Категория: { curr.Category}");
+                    listBox1.Items.Add($"Кол-во мест: { veh.NumOfSeats}");
+                    listBox1.Items.Add($"Тип кузова: { veh.Type}");
+                    listBox1.Items.Add($"Категория: { veh.Category}");
                 }
                 else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Truck)
                 {
-                    Truck curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
+                    Truck veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Truck;
                     listBox1.Items.Add("Вид ТС: грузовое авто");
-                    listBox1.Items.Add($"Грузоподъемность: { curr.LoadCapacity}кг");
-                    listBox1.Items.Add($"Кол-во осей: { curr.NumOfAxles}");
+                    listBox1.Items.Add($"Грузоподъемность: { veh.LoadCapacity}кг");
+                    listBox1.Items.Add($"Кол-во осей: { veh.NumOfAxles}");
                 }
                 else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Taxis)
                 {
-                    Taxis currTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
+                    Taxis vehTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
                     listBox1.Items.Add("Вид ТС: маршрутное такси");
-                    listBox1.Items.Add($"Вместимость: { currTaxis.Length} пассажиромест");
-                    listBox1.Items.Add($"Назначение: { currTaxis.Appointment}");
-                    listBox1.Items.Add($"Длина маршрута: { currTaxis.NumOfRoutes} км");
-                    listBox1.Items.Add($"Выгода да выезд: { currTaxis.Profit(currTaxis.NumOfRoutes) } крышек");
+                    listBox1.Items.Add($"Вместимость: { vehTaxis.Length} пассажиромест");
+                    listBox1.Items.Add($"Назначение: { vehTaxis.Appointment}");
+                    listBox1.Items.Add($"Длина маршрута: { vehTaxis.NumOfRoutes} км");
+                    listBox1.Items.Add($"Выгода да выезд: { vehTaxis.Profit(vehTaxis.NumOfRoutes) } крышек");
                 }
 
                 else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Bus)
                 {
-                    Bus curr = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
+                    Bus veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
                     listBox1.Items.Add("Вид ТС: автобус");
-                    listBox1.Items.Add($"Вместимость: { curr.Length} пассажиромест");
-                    listBox1.Items.Add($"Назначение: { curr.Appointment}");
+                    listBox1.Items.Add($"Вместимость: { veh.Length} пассажиромест");
+                    listBox1.Items.Add($"Назначение: { veh.Appointment}");
                 }
                 else
                 {
@@ -221,7 +221,7 @@ namespace laba2
         {
             if (checkInputVal())
             {
-                Vehicle worker;
+                Vehicle trans;
                 string autoCh = comboBoxAuto.Text.ToString();
                 string brand = textBoxBrand.Text;
                 string model = textBoxModel.Text;
@@ -233,32 +233,32 @@ namespace laba2
                     int seat = Convert.ToInt32(textBoxSeats.Text);
                     string type = textBoxType.Text;
                     string cat = textBoxCategory.Text;
-                    worker = new Car(brand, model, year, engine, seat, type, cat);
+                    trans = new Car(brand, model, year, engine, seat, type, cat);
                 }
                 else if (autoCh.Equals("Автомобиль"))
-                    worker = new Vehicle(brand, model, year, engine);
+                    trans = new Vehicle(brand, model, year, engine);
                 else if (autoCh.Equals("Автобус"))
                 {
                     int length = Convert.ToInt32(textBoxLen.Text);
                     string app = textBoxApp.Text;
-                    worker = new Bus(brand, model, year, engine, length, app);
+                    trans = new Bus(brand, model, year, engine, length, app);
                 }
                 else if (autoCh.Equals("Грузовой автомобиль"))
                 {
                     int capacity = Convert.ToInt32(textBoxLoad.Text);
                     int axles = Convert.ToInt32(textBoxAxles.Text);
-                    worker = new Truck(brand, model, year, engine, capacity, axles);
+                    trans = new Truck(brand, model, year, engine, capacity, axles);
                 }
                 else if (autoCh.Equals("Маршрутное такси"))
                 {
                     int length = Convert.ToInt32(textBoxLen.Text);
                     string app = textBoxApp.Text;
                     int route = Convert.ToInt32(textBoxRoutes.Text);
-                    worker = new Taxis(brand, model, year, engine, length, app, route);
+                    trans = new Taxis(brand, model, year, engine, length, app, route);
                 }
                 else
                     throw new Exception(autoCh + " отсутствует в автопарке!");
-                Autos.Add(worker);
+                Autos.Add(trans);
                 dataGridUpd();
 
             }
@@ -340,9 +340,9 @@ namespace laba2
                 }
                 else if (Autos[i - 1] is Taxis)
                 {
-                    Taxis currTaxis = Autos[i - 1] as Taxis;
+                    Taxis vehTaxis = Autos[i - 1] as Taxis;
                     TaxisCount++;
-                    profit = profit + currTaxis.Profit(currTaxis.NumOfRoutes);
+                    profit = profit + vehTaxis.Profit(vehTaxis.NumOfRoutes);
                 }
 
                 else if (Autos[i - 1] is Bus)
