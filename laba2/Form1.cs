@@ -86,6 +86,8 @@ namespace laba2
                 comboBoxAuto.SelectedIndex = 4;
                 Taxis vehTaxis = Autos[dataGridView1.SelectedCells[0].RowIndex] as Taxis;
                 textBoxRoutes.Text = vehTaxis.NumOfRoutes.ToString();
+                textBoxLen.Text = vehTaxis.Length.ToString();
+                textBoxApp.Text = vehTaxis.Appointment;
             }
             else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Bus)
             {
