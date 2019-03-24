@@ -185,7 +185,6 @@ namespace laba2
             }
         }
 
-
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             listBox1.Items.Clear();
@@ -194,8 +193,6 @@ namespace laba2
             {
                 listBox1.Items.Add($"{ Autos[dataGridView1.SelectedCells[0].RowIndex].Brand} { Autos[dataGridView1.SelectedCells[0].RowIndex].Model}");
                 listBox1.Items.Add($"Год выпуска: { Autos[dataGridView1.SelectedCells[0].RowIndex].Year}");
-
-
                 if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
                 {
                     Car veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Car;
@@ -220,7 +217,6 @@ namespace laba2
                     listBox1.Items.Add($"Длина маршрута: { vehTaxis.NumOfRoutes} км");
                     listBox1.Items.Add($"Выгода да выезд: { vehTaxis.Profit(vehTaxis.NumOfRoutes) } крышек");
                 }
-
                 else if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Bus)
                 {
                     Bus veh = Autos[dataGridView1.SelectedCells[0].RowIndex] as Bus;
@@ -257,7 +253,6 @@ namespace laba2
                 string model = textBoxModel.Text;
                 int year = Convert.ToInt32(textBoxYear.Text);
                 Engine engine = new Engine(Convert.ToInt32(textBoxNumofCyl.Text), Convert.ToInt32(textBoxPower.Text));
-
                 if (autoCh.Equals("Легковой автомобиль"))
                 {
                     int seat = Convert.ToInt32(textBoxSeats.Text);
@@ -296,8 +291,6 @@ namespace laba2
             {
                 MessageBox.Show("Не все поля заполнены!");
             }
-
-
         }
 
         private void comboBoxProfession_SelectedIndexChanged(object sender, EventArgs e)
