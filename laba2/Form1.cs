@@ -16,7 +16,6 @@ namespace laba2
         private void dataGridUpd()
         {
             listBox1.Items.Clear();
-            listBox1.Items.Add("Выберите ТС.");
             dataGridView1.Rows.Clear();
             ClearFields();
             for (int i = 0; i < Autos.Count; i++)
