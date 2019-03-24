@@ -92,7 +92,6 @@ namespace laba2
             textBoxPower.Text = Autos[dataGridView1.SelectedCells[0].RowIndex].Engine.Power.ToString();
             textBoxNumofCyl.Text = Autos[dataGridView1.SelectedCells[0].RowIndex].Engine.NumOfCylind.ToString();
             textBoxYear.Text = Autos[dataGridView1.SelectedCells[0].RowIndex].Year.ToString();
-
             comboBoxAuto.SelectedIndex = 0;
             if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
             {
@@ -137,7 +136,6 @@ namespace laba2
                     Autos[dataGridView1.SelectedCells[0].RowIndex].Year = Convert.ToInt32(textBoxYear.Text);
                     Autos[dataGridView1.SelectedCells[0].RowIndex].Engine.NumOfCylind = Convert.ToInt32(textBoxNumofCyl.Text);
                     Autos[dataGridView1.SelectedCells[0].RowIndex].Engine.Power = Convert.ToInt32(textBoxPower.Text);
-
                     comboBoxAuto.SelectedIndex = 0;
                     if (Autos[dataGridView1.SelectedCells[0].RowIndex] is Car)
                     {
