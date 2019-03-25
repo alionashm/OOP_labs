@@ -112,7 +112,7 @@
             this.comboBoxAuto.Size = new System.Drawing.Size(175, 21);
             this.comboBoxAuto.TabIndex = 59;
             this.comboBoxAuto.Tag = "";
-            this.comboBoxAuto.SelectedIndexChanged += new System.EventHandler(this.comboBoxProfession_SelectedIndexChanged);
+            this.comboBoxAuto.SelectedIndexChanged += new System.EventHandler(this.comboBoxAuto_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -129,6 +129,7 @@
             this.textBoxPower.Name = "textBoxPower";
             this.textBoxPower.Size = new System.Drawing.Size(145, 20);
             this.textBoxPower.TabIndex = 46;
+            this.textBoxPower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPower_KeyPress);
             // 
             // label4
             // 
@@ -145,6 +146,7 @@
             this.textBoxNumofCyl.Name = "textBoxNumofCyl";
             this.textBoxNumofCyl.Size = new System.Drawing.Size(145, 20);
             this.textBoxNumofCyl.TabIndex = 43;
+            this.textBoxNumofCyl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumofCyl_KeyPress);
             // 
             // label3
             // 
@@ -161,6 +163,7 @@
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(145, 20);
             this.textBoxModel.TabIndex = 41;
+            this.textBoxModel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxModel_KeyPress);
             // 
             // label2
             // 
@@ -177,6 +180,7 @@
             this.textBoxBrand.Name = "textBoxBrand";
             this.textBoxBrand.Size = new System.Drawing.Size(145, 20);
             this.textBoxBrand.TabIndex = 39;
+            this.textBoxBrand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBrand_KeyPress);
             // 
             // label1
             // 
@@ -266,6 +270,7 @@
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(145, 20);
             this.textBoxYear.TabIndex = 64;
+            this.textBoxYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxYear_KeyPress);
             // 
             // textBoxCategory
             // 
@@ -385,6 +390,7 @@
             this.textBoxLen.Name = "textBoxLen";
             this.textBoxLen.Size = new System.Drawing.Size(145, 20);
             this.textBoxLen.TabIndex = 79;
+            this.textBoxLen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLen_KeyPress);
             // 
             // label14
             // 
