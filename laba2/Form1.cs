@@ -401,18 +401,18 @@ namespace laba2
         {
             if (radioButtonBin.Checked)
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                BinaryFormatter serializer = new BinaryFormatter();
                 using (FileStream fileS = new FileStream("auto.dat", FileMode.OpenOrCreate))
                 {
-                    formatter.Serialize(fileS, Autos);
+                    serializer.Serialize(fileS, Autos);
                 }
             }
             else if (radioButtonXML.Checked)
             {
-                XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
                 using (FileStream fileS = new FileStream("auto.xml", FileMode.OpenOrCreate))
                 {
-                    formatter.Serialize(fileS, Autos);
+                    serializer.Serialize(fileS, Autos);
                 }
             }
             if (radioButtonAny.Checked)
@@ -460,18 +460,18 @@ namespace laba2
             Autos.Clear();
             if (radioButtonBin.Checked)
             {
-                BinaryFormatter formatter = new BinaryFormatter();
+                BinaryFormatter serializer = new BinaryFormatter();
                 using (FileStream fileS = new FileStream("auto.dat", FileMode.OpenOrCreate))
                 {
-                    Autos = (List<Vehicle>)formatter.Deserialize(fileS);
+                    Autos = (List<Vehicle>)serializer.Deserialize(fileS);
                 }
             }
             else if (radioButtonXML.Checked)
             {
-                XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
                 using (FileStream fileS = new FileStream("auto.xml", FileMode.OpenOrCreate))
                 {
-                    Autos = (List<Vehicle>)formatter.Deserialize(fileS);
+                    Autos = (List<Vehicle>)serializer.Deserialize(fileS);
                 }
             }
             if (radioButtonAny.Checked)
