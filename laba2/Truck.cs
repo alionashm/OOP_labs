@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Truck:Vehicle
+    [Serializable]
+    public class Truck :Vehicle
     {
         public int LoadCapacity
         {
@@ -16,6 +17,7 @@ namespace laba2
         {
             get; set;
         }
+        public Truck() { }
         public Truck(string brand, string model, int year, Engine engine, int cap, int axle) : base(brand, model, year, engine)
         {
             this.LoadCapacity = cap;

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Engine
+    [Serializable]
+    public class Engine
     {
         public int NumOfCylind
         {
@@ -16,6 +17,7 @@ namespace laba2
         {
             get; set;
         }
+        public Engine() { }
         public Engine(int numcyl, int pow)
         {
             this.NumOfCylind = numcyl;

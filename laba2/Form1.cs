@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace laba2
 {
@@ -390,6 +395,139 @@ namespace laba2
                 label11.Visible = true;
                 textBoxRoutes.Visible = true;
             }
+        }
+
+        private void buttonSerialization_Click(object sender, EventArgs e)
+        {
+            if (radioButtonBin.Checked)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream("auto.dat", FileMode.OpenOrCreate))
+                {
+                    formatter.Serialize(fs, Autos);
+                }
+            }
+            else if (radioButtonXML.Checked)
+            {
+                XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
+                using (FileStream fs = new FileStream("auto.xml", FileMode.OpenOrCreate))
+                {
+                    formatter.Serialize(fs, Autos);
+                }
+            }
+            if (radioButtonAny.Checked)
+            {
+                string text = "";
+                for (int i = 0; i < Autos.Count; i++)
+                {
+
+                    if (Autos[i] is Car)
+                    {
+                        Car curr = Autos[i] as Car;
+                        text += $"'Легковой автомобиль'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'|'{curr.Category}'|'{curr.NumOfSeats}'|'{curr.Type}'\r\n";
+                    }
+                    else if (Autos[i] is Truck)
+                    {
+                        Truck curr = Autos[i] as Truck;
+                        text += $"'Грузовой автомобиль'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'|'{curr.LoadCapacity}'|'{curr.NumOfAxles}'\r\n";
+                    }
+                    else if (Autos[i] is Taxis)
+                    {
+                        Taxis curr = Autos[i] as Taxis;
+                        text += $"'Маршрутное такси'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'|'{curr.Length}'|'{curr.Appointment}'|'{curr.NumOfRoutes}'\r\n";
+                    }
+                    else if (Autos[i] is Bus)
+                    {
+                        Bus curr = Autos[i] as Bus;
+                        text += $"'Автобус'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'|'{curr.Length}'|'{curr.Appointment}'\r\n";
+                    }
+                    else
+                    {
+                        Vehicle curr = Autos[i] as Vehicle;
+                        text += $"'Автомобиль'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'\r\n";
+                    }
+                }
+                using (FileStream fs = new FileStream("auto.txt", FileMode.OpenOrCreate))
+                {
+                    byte[] array = Encoding.Default.GetBytes(text);
+                    fs.Write(array, 0, array.Length);
+                }
+            }
+        }
+
+        private void buttonDeserialization_Click(object sender, EventArgs e)
+        {
+            Autos.Clear();
+            if (radioButtonBin.Checked)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream("auto.dat", FileMode.OpenOrCreate))
+                {
+                    Autos = (List<Vehicle>)formatter.Deserialize(fs);
+                }
+            }
+            else if (radioButtonXML.Checked)
+            {
+                XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
+                using (FileStream fs = new FileStream("auto.xml", FileMode.OpenOrCreate))
+                {
+                    Autos = (List<Vehicle>)formatter.Deserialize(fs);
+                }
+            }
+            if (radioButtonAny.Checked)
+            {
+                using (StreamReader sr = new StreamReader("auto.txt", System.Text.Encoding.Default))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] line = sr.ReadLine().Split('|');
+                        string veh = line[0].Substring(1, line[0].Length - 2);
+                        string brand = line[1].Substring(1, line[1].Length - 2);
+                        string model = line[2].Substring(1, line[2].Length - 2);
+                        int year = Convert.ToInt32(line[3].Substring(1, line[3].Length - 2));
+                        int numofcyl = Convert.ToInt32(line[4].Substring(1, line[4].Length - 2));
+                        int power = Convert.ToInt32(line[5].Substring(1, line[5].Length - 2));
+                        Engine engine = new Engine(numofcyl,power);
+                        Vehicle trans;
+                        if (veh.Equals("Легковой автомобиль"))
+                        {
+                            
+                            string category = line[6].Substring(1, line[6].Length - 2);
+                            int numofseats = Convert.ToInt32(line[7].Substring(1, line[7].Length - 2));
+                            string type = line[8].Substring(1, line[8].Length - 2);
+                            trans = new Car(brand, model, year, engine, numofseats, type, category);
+                        }
+                        else if (veh.Equals("Автомобиль"))
+                            trans = new Vehicle(brand, model, year, engine);
+                        else if (veh.Equals("Автобус"))
+                        {
+                            int length = Convert.ToInt32(line[6].Substring(1, line[6].Length - 2));
+                            string appointment = line[7].Substring(1, line[7].Length - 2);
+                            trans = new Bus(brand, model, year, engine, length, appointment);
+                        }
+                        else if (veh.Equals("Грузовой автомобиль"))
+                        {
+                            int load = Convert.ToInt32(line[6].Substring(1, line[6].Length - 2));
+                            int numofaxles = Convert.ToInt32(line[7].Substring(1, line[7].Length - 2));
+                            trans = new Truck(brand, model, year, engine, load, numofaxles);
+                        }
+                        else if (veh.Equals("Маршрутное такси"))
+                        {
+                            int length = Convert.ToInt32(line[6].Substring(1, line[6].Length - 2));
+                            string appointment = line[7].Substring(1, line[7].Length - 2);
+                            int route = Convert.ToInt32(line[8].Substring(1, line[8].Length - 2));
+                            trans = new Taxis(brand, model, year, engine, length, appointment, route);
+                        }
+                        else
+                            throw new Exception(veh + " отсутствует в автопарке!");
+                        Autos.Add(trans);
+                        
+                        
+                    }
+                }
+            }
+
+            dataGridUpd();
         }
     }
 }

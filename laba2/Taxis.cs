@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Taxis:Bus
+    [Serializable]
+    public class Taxis :Bus
     {
         public int NumOfRoutes
         {
             get; set;
         }
+        public Taxis() { }
         public Taxis(string brand, string model, int year, Engine engine, int len, string busapp, int numr) : base(brand,model,year, engine, len, busapp)
         {
             this.NumOfRoutes = numr;

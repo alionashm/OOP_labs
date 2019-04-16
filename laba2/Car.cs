@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Car:Vehicle
+    [Serializable]
+    public class Car:Vehicle
     {
         public int NumOfSeats
         {
@@ -20,6 +21,7 @@ namespace laba2
         {
             get; set;
         }
+        public Car() { }
         public Car(string brand, string model,int year, Engine engine, int seat, string bodytype, string cat) : base(brand, model, year, engine)
         {
             this.NumOfSeats = seat;

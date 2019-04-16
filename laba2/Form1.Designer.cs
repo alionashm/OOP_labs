@@ -67,6 +67,12 @@
             this.textBoxLen = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.radioButtonBin = new System.Windows.Forms.RadioButton();
+            this.radioButtonXML = new System.Windows.Forms.RadioButton();
+            this.radioButtonAny = new System.Windows.Forms.RadioButton();
+            this.buttonSerialization = new System.Windows.Forms.Button();
+            this.buttonDeserialization = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -411,11 +417,79 @@
             this.label15.TabIndex = 82;
             this.label15.Text = "Характеристики двигателя:";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(490, 70);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 13);
+            this.label16.TabIndex = 83;
+            this.label16.Text = "Выберите сериализацию:";
+            // 
+            // radioButtonBin
+            // 
+            this.radioButtonBin.AutoSize = true;
+            this.radioButtonBin.Location = new System.Drawing.Point(493, 91);
+            this.radioButtonBin.Name = "radioButtonBin";
+            this.radioButtonBin.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonBin.TabIndex = 84;
+            this.radioButtonBin.TabStop = true;
+            this.radioButtonBin.Text = "Бинарная";
+            this.radioButtonBin.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonXML
+            // 
+            this.radioButtonXML.AutoSize = true;
+            this.radioButtonXML.Location = new System.Drawing.Point(493, 114);
+            this.radioButtonXML.Name = "radioButtonXML";
+            this.radioButtonXML.Size = new System.Drawing.Size(47, 17);
+            this.radioButtonXML.TabIndex = 85;
+            this.radioButtonXML.TabStop = true;
+            this.radioButtonXML.Text = "XML";
+            this.radioButtonXML.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAny
+            // 
+            this.radioButtonAny.AutoSize = true;
+            this.radioButtonAny.Location = new System.Drawing.Point(493, 137);
+            this.radioButtonAny.Name = "radioButtonAny";
+            this.radioButtonAny.Size = new System.Drawing.Size(200, 17);
+            this.radioButtonAny.TabIndex = 86;
+            this.radioButtonAny.TabStop = true;
+            this.radioButtonAny.Text = "Произвольный текстовый формат";
+            this.radioButtonAny.UseVisualStyleBackColor = true;
+            // 
+            // buttonSerialization
+            // 
+            this.buttonSerialization.Location = new System.Drawing.Point(493, 166);
+            this.buttonSerialization.Name = "buttonSerialization";
+            this.buttonSerialization.Size = new System.Drawing.Size(99, 23);
+            this.buttonSerialization.TabIndex = 87;
+            this.buttonSerialization.Text = "Сериализация";
+            this.buttonSerialization.UseVisualStyleBackColor = true;
+            this.buttonSerialization.Click += new System.EventHandler(this.buttonSerialization_Click);
+            // 
+            // buttonDeserialization
+            // 
+            this.buttonDeserialization.Location = new System.Drawing.Point(598, 166);
+            this.buttonDeserialization.Name = "buttonDeserialization";
+            this.buttonDeserialization.Size = new System.Drawing.Size(104, 23);
+            this.buttonDeserialization.TabIndex = 88;
+            this.buttonDeserialization.Text = "Десериализация";
+            this.buttonDeserialization.UseVisualStyleBackColor = true;
+            this.buttonDeserialization.Click += new System.EventHandler(this.buttonDeserialization_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 435);
+            this.Controls.Add(this.buttonDeserialization);
+            this.Controls.Add(this.buttonSerialization);
+            this.Controls.Add(this.radioButtonAny);
+            this.Controls.Add(this.radioButtonXML);
+            this.Controls.Add(this.radioButtonBin);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.textBoxApp);
             this.Controls.Add(this.label13);
@@ -500,6 +574,12 @@
         private System.Windows.Forms.TextBox textBoxLen;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.RadioButton radioButtonBin;
+        private System.Windows.Forms.RadioButton radioButtonXML;
+        private System.Windows.Forms.RadioButton radioButtonAny;
+        private System.Windows.Forms.Button buttonSerialization;
+        private System.Windows.Forms.Button buttonDeserialization;
     }
 }
 

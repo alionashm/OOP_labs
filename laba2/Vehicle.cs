@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace laba2
 {
-    class Vehicle
+    [Serializable]
+    public class Vehicle
     {
         public string Brand
         {
@@ -24,6 +25,7 @@ namespace laba2
         {
             get; set;
         }
+        public Vehicle() { }
         public Vehicle(string br, string mod, int y, Engine someengine)
         {
             this.Brand = br;
