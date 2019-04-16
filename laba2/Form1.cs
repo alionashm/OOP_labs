@@ -402,17 +402,17 @@ namespace laba2
             if (radioButtonBin.Checked)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("auto.dat", FileMode.OpenOrCreate))
+                using (FileStream fileS = new FileStream("auto.dat", FileMode.OpenOrCreate))
                 {
-                    formatter.Serialize(fs, Autos);
+                    formatter.Serialize(fileS, Autos);
                 }
             }
             else if (radioButtonXML.Checked)
             {
                 XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
-                using (FileStream fs = new FileStream("auto.xml", FileMode.OpenOrCreate))
+                using (FileStream fileS = new FileStream("auto.xml", FileMode.OpenOrCreate))
                 {
-                    formatter.Serialize(fs, Autos);
+                    formatter.Serialize(fileS, Autos);
                 }
             }
             if (radioButtonAny.Checked)
@@ -447,10 +447,10 @@ namespace laba2
                         text += $"'Автомобиль'|'{curr.Brand}'|'{curr.Model}'|'{curr.Year}'|'{curr.Engine.NumOfCylind}'|'{curr.Engine.Power}'\r\n";
                     }
                 }
-                using (FileStream fs = new FileStream("auto.txt", FileMode.OpenOrCreate))
+                using (FileStream fileS = new FileStream("auto.txt", FileMode.OpenOrCreate))
                 {
                     byte[] array = Encoding.Default.GetBytes(text);
-                    fs.Write(array, 0, array.Length);
+                    fileS.Write(array, 0, array.Length);
                 }
             }
         }
@@ -461,26 +461,26 @@ namespace laba2
             if (radioButtonBin.Checked)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("auto.dat", FileMode.OpenOrCreate))
+                using (FileStream fileS = new FileStream("auto.dat", FileMode.OpenOrCreate))
                 {
-                    Autos = (List<Vehicle>)formatter.Deserialize(fs);
+                    Autos = (List<Vehicle>)formatter.Deserialize(fileS);
                 }
             }
             else if (radioButtonXML.Checked)
             {
                 XmlSerializer formatter = new XmlSerializer(typeof(List<Vehicle>), new Type[] { typeof(Car), typeof(Truck), typeof(Taxis), typeof(Bus) });
-                using (FileStream fs = new FileStream("auto.xml", FileMode.OpenOrCreate))
+                using (FileStream fileS = new FileStream("auto.xml", FileMode.OpenOrCreate))
                 {
-                    Autos = (List<Vehicle>)formatter.Deserialize(fs);
+                    Autos = (List<Vehicle>)formatter.Deserialize(fileS);
                 }
             }
             if (radioButtonAny.Checked)
             {
-                using (StreamReader sr = new StreamReader("auto.txt", System.Text.Encoding.Default))
+                using (StreamReader reader = new StreamReader("auto.txt", System.Text.Encoding.Default))
                 {
-                    while (!sr.EndOfStream)
+                    while (!reader.EndOfStream)
                     {
-                        string[] line = sr.ReadLine().Split('|');
+                        string[] line = reader.ReadLine().Split('|');
                         string veh = line[0].Substring(1, line[0].Length - 2);
                         string brand = line[1].Substring(1, line[1].Length - 2);
                         string model = line[2].Substring(1, line[2].Length - 2);
