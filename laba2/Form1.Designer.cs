@@ -73,6 +73,8 @@
             this.radioButtonAny = new System.Windows.Forms.RadioButton();
             this.buttonSerialization = new System.Windows.Forms.Button();
             this.buttonDeserialization = new System.Windows.Forms.Button();
+            this.ArchiveTypeCmBx = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -479,11 +481,36 @@
             this.buttonDeserialization.UseVisualStyleBackColor = true;
             this.buttonDeserialization.Click += new System.EventHandler(this.buttonDeserialization_Click);
             // 
+            // ArchiveTypeCmBx
+            // 
+            this.ArchiveTypeCmBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ArchiveTypeCmBx.FormattingEnabled = true;
+            this.ArchiveTypeCmBx.Items.AddRange(new object[] {
+            "Zip",
+            "GZip",
+            "BZip2"});
+            this.ArchiveTypeCmBx.Location = new System.Drawing.Point(666, 87);
+            this.ArchiveTypeCmBx.Name = "ArchiveTypeCmBx";
+            this.ArchiveTypeCmBx.Size = new System.Drawing.Size(122, 21);
+            this.ArchiveTypeCmBx.TabIndex = 89;
+            this.ArchiveTypeCmBx.DropDown += new System.EventHandler(this.ArchiveTypeCmBx_DropDown);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(663, 66);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(136, 13);
+            this.label17.TabIndex = 90;
+            this.label17.Text = "Выберите тип архивации:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 435);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.ArchiveTypeCmBx);
             this.Controls.Add(this.buttonDeserialization);
             this.Controls.Add(this.buttonSerialization);
             this.Controls.Add(this.radioButtonAny);
@@ -580,6 +607,8 @@
         private System.Windows.Forms.RadioButton radioButtonAny;
         private System.Windows.Forms.Button buttonSerialization;
         private System.Windows.Forms.Button buttonDeserialization;
+        private System.Windows.Forms.ComboBox ArchiveTypeCmBx;
+        private System.Windows.Forms.Label label17;
     }
 }
 

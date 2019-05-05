@@ -73,6 +73,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +86,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bz2Archive\Bz2Archive.csproj">
+      <Project>{ce93ae85-49e2-4664-bf4b-2525be501dc2}</Project>
+      <Name>Bz2Archive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GzArchive\GzArchive.csproj">
+      <Project>{4e87021a-d219-44da-bea7-d9f413b10846}</Project>
+      <Name>GzArchive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZipArchive\ZipArchive.csproj">
+      <Project>{2fa9b2d8-704f-4ac0-9ba7-fd3e91f49a08}</Project>
+      <Name>ZipArchive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZipInterface\ZipInterface.csproj">
+      <Project>{598ba38c-0e03-4bf6-9c28-71f0126d98a0}</Project>
+      <Name>ZipInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
