@@ -47,7 +47,7 @@ namespace ZipArchive
                 zf = new ZipFile(fs);
                 foreach (ZipEntry zipEntry in zf)
                 {
-                    if (!zipEntry.IsFile) // Игнорирование папок
+                    if (!zipEntry.IsFile) 
                         continue;
                     
                     string entryFileName = zipEntry.Name;

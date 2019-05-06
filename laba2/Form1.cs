@@ -407,19 +407,14 @@ namespace laba2
                 Console.Write("Плагин " + DllName + " не найден.");
                 return;
             }
-
-            // Загрузка сборки
+            
             Assembly AboutAssembly = Assembly.LoadFrom(DllName);
-
-            // Проход по всем public-типам сборки
+            
             foreach (Type t in AboutAssembly.GetExportedTypes())
             {
-                // Поиск класса, реализующего IZip,
                 if (t.IsClass && typeof(IZip).IsAssignableFrom(t))
                 {
                     IZip about = (IZip)Activator.CreateInstance(t);
-
-                    // Архивация
                     about.Zip(source, target);
                     break;
                 }
@@ -441,8 +436,7 @@ namespace laba2
             {
                 Zip(FileToZip, FileToZip + ".bz2", "Bz2Archive.dll");
             }
-
-            // Удаление неархивированного файла
+            
             File.Delete(FileToZip);
         }
 
@@ -512,8 +506,7 @@ namespace laba2
             string FileName;
             string FileExtension;
             string FileToDeserialize = "";
-
-            // Выбор архива для десереализации
+            
             var openFileDialog1 = new OpenFileDialog() { Filter = "Zip Files (zip,gz,bz2)|*.zip;*.gz;*.bz2" };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -533,19 +526,14 @@ namespace laba2
                     Console.Write("Плагин " + DllName + " не найден.");
                     return;
                 }
-
-                // Загрузка сборки
+                
                 Assembly AboutAssembly = Assembly.LoadFrom(DllName);
-
-                // Проход по всем public-типам сборки
+                
                 foreach (Type t in AboutAssembly.GetExportedTypes())
                 {
-                    // Поиск класса, реализующего IZip
                     if (t.IsClass && typeof(IZip).IsAssignableFrom(t))
                     {
                         IZip about = (IZip)Activator.CreateInstance(t);
-
-                        // Распаковка архива
                         FileToDeserialize = about.UnZip(FileName, Path.GetFileNameWithoutExtension(FileName));
                         break;
                     }
@@ -559,19 +547,13 @@ namespace laba2
                     Console.Write("Плагин " + DllName + " не найден.");
                     return;
                 }
-
-                // Загрузка сборки
                 Assembly AboutAssembly = Assembly.LoadFrom(DllName);
-
-                // Проход по всем public-типам сборки
+                
                 foreach (Type t in AboutAssembly.GetExportedTypes())
                 {
-                    // Поиск класса, реализующего IZip,
                     if (t.IsClass && typeof(IZip).IsAssignableFrom(t))
                     {
                         IZip about = (IZip)Activator.CreateInstance(t);
-
-                        // Распаковка архива
                         FileToDeserialize = about.UnZip(FileName, Path.GetFileNameWithoutExtension(FileName));
                         break;
                     }
@@ -586,19 +568,13 @@ namespace laba2
                     Console.Write("Плагин " + DllName + " не найден.");
                     return;
                 }
-
-                // Загрузка сборки
                 Assembly AboutAssembly = Assembly.LoadFrom(DllName);
-
-                // Проход по всем public-типам сборки
+                
                 foreach (Type t in AboutAssembly.GetExportedTypes())
                 {
-                    // Поиск класса, реализующего IZip,
                     if (t.IsClass && typeof(IZip).IsAssignableFrom(t))
                     {
                         IZip about = (IZip)Activator.CreateInstance(t);
-
-                        // Распаковка архива
                         FileToDeserialize = about.UnZip(FileName, Path.GetFileNameWithoutExtension(FileName));
                         break;
                     }
@@ -679,14 +655,11 @@ namespace laba2
 
         private void ArchiveTypeCmBx_DropDown(object sender, EventArgs e)
         {
-            // Очистка списка плагинов
             ArchiveTypeCmBx.Items.Clear();
-
-            // Плагины для загрузки и типы архивации
+            
             string[] plugins = { "ZipArchive.dll", "GzArchive.dll", "Bz2Archive.dll" };
             string[] types = { "Zip", "GZip", "BZip2" };
-
-            // Загрузка плагинов
+            
             for (int i = 0; i < plugins.Length; i++)
             {
                 string DllName = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), plugins[i]);

@@ -8,11 +8,11 @@ namespace ZipInterface
 {
     public interface IZip
     {
-        // При архивации
-        // source - имя файла для архивации
-        // target - имя полученного архива
-        // Для распаковки - наоборот
-        // Возвращают имя результирующего файла
+        /* При архивации
+           source - архивируемый файл
+           target - полученный архив
+           При распаковке наоборот
+           Возвращают имя результирующего файла*/
 
         string Zip(string source, string target);
         string UnZip(string source, string target);
